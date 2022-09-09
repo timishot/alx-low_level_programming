@@ -15,4 +15,5 @@ int main(void)
 		printf("%d", a);
 	}
 	putchar('\n');
-	re
+	return (0);
+}
