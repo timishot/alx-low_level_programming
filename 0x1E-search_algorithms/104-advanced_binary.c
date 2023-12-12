@@ -10,9 +10,9 @@
 int advanced_binary(int *array, size_t size, int value)
 {
 	if (array == NULL || size == 0)
-		return -1;
+		return (-1);
 
-	return advanced_binary_recursive(array, 0, size -1, value);
+	return (advanced_binary_recursive(array, 0, size - 1, value));
 }
 
 /**
@@ -42,14 +42,14 @@ int advanced_binary_recursive(int *array, size_t low, size_t high, int value)
 	mid = low + (high - low) / 2;
 
 	if (array[mid] == value)
-		return mid;
+		return (mid);
 
 	if (low == high)
-		return -1;
+		return (-1);
 
 	if (array[mid] < value)
-		return advanced_binary_recursive(array, mid + 1, high, value);
+		return (advanced_binary_recursive(array, mid + 1, high, value));
 	else
-		return advanced_binary_recursive(array, low, mid, value);
+		return (advanced_binary_recursive(array, low, mid, value));
 }
 
