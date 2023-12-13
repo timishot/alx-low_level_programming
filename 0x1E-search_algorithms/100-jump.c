@@ -9,25 +9,39 @@
  * Return: Print value else (-1)
  */
 
-int jump_search(int *array, size_t size, int value){
+int jump_search(int *array, size_t size, int value)
+{
 	size_t i;
-	size_t step = (size_t) sqrt(size); /* Determine the block size*/
-
-	/* Find the block where the target might be present*/
+	size_t step = (size_t) sqrt(size);
 	size_t prev = 0;
-	while (array[prev] < value){
+
+	if (array == NULL || size == 0)
+		return (-1);
+
+
+	printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+	while (array[prev] < value)
+	{
 		prev += step;
-		if (prev >= size){
-			return -1; /* value not found the array*/
+		if (prev >= size)
+		{
+			break;
 		}
+		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
 	}
 
-	/* Perform linear search within the identified block*/
-	for ( i = prev - step; i <= prev; i++){
-		if (array[i] == value){
-			return i;
+	printf("Value found between indexes [%lu] and [%lu]\n", prev - step, prev);
+
+	for (i = prev - step; i <= prev && i < size; i++)
+	{
+		printf("Value checked array[%ld] =  [%d]\n", i, array[i]);
+		if (array[i] == value)
+		{
+			return (i);
 		}
 	}
 
 	return (-1);
 }
+
+
